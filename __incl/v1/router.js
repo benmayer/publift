@@ -26,6 +26,9 @@ module.exports = function(model) {
     var data = req.query;
     var kind = data.publisher || config.gloud.kind;
     if (data.publisher){
+      if (!data.timestamp){
+        data.timestamp = new Date().getTime();
+      }
       model.create(data, kind, function(err, savedData) {
         if (err) return handleRpcError(err, res);
       });
