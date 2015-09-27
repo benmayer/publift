@@ -11,6 +11,9 @@ module.exports = {
 
   port: process.env.PORT || 8080,
 
+  // app root
+  gRoot: __dirname,
+
   // dataBackend can be 'datastore', 'cloudsql', or 'mongodb'.
   // see below
   dataBackend: 'datastore',

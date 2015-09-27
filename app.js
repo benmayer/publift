@@ -5,9 +5,6 @@
 // Version 1.0
 
 
-// requirements install 
-// 
-
 // requirements files
 //   app js 
 //       express 
@@ -19,9 +16,6 @@
 //          body parser
 
 
-
-
-
 'use strict';
 
 var express = require('express');
@@ -29,8 +23,6 @@ var config = require('./config');
 var inclPath = './__incl/v'+ config.version;
 
 var app = express();
-
-
 
 // Tracking Request
 var model = require(inclPath+'/model-' + config.dataBackend)(config);
@@ -40,7 +32,6 @@ app.use('/tracking', require(inclPath+'/crud')(model));
 // app.use('/tracking', express.static('html'));
 // app.use('/api/tracking', require('./tracking/api')(model));
 // app.use('/api', require('./_incl/gapi')(model));
-
 
 
 // homepage

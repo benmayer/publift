@@ -7,10 +7,12 @@ var gcloud = require('gcloud');
 module.exports = function(config) {
 
   // [START config]
+
   var ds = gcloud.datastore.dataset(config.gcloud);
   // var kind = ds.kind;
 
   // [END config]
+
 
 
   // Translates from Datastore's entity format to
@@ -151,6 +153,7 @@ module.exports = function(config) {
 
   // [START exports]
   return {
+    config : config,
     create: function(data, kind, cb) {
       update(null, data, kind, cb);
     },
