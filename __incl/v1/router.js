@@ -17,11 +17,15 @@ module.exports = function(model) {
     next();
   });
 
-  router.get('/pixel.gif', function list(req, res) {
+  router.get('/', function list(req, res) {
+    console.log('tracking');
+    res.end("end..");
+  });
+
+  router.get('/tr.gif', function list(req, res) {
     var data = req.query;
     var kind = data.publisher || config.gloud.kind;
-
-    if (data.order){
+    if (data.publisher){
       model.create(data, kind, function(err, savedData) {
         if (err) return handleRpcError(err, res);
       });
@@ -31,13 +35,7 @@ module.exports = function(model) {
     });
   });
 
-  // router.get('/api/', function list(req, res) {
-  //   var data = data.publisher;
-  //   var kind = data.publisher;
-  //   var api  = model.read(id, kind, cb) {
 
-  //   }
-  // });
 
   return router;
 

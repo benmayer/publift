@@ -2,7 +2,7 @@
   "name": "publift-yield-wizzard",
   "version": "1.0.0",
   "description": "",
-  "repository": "https://github.com/benmayer/publift-yield-expert",
+  "repository": "https://github.com/benmayer/publift-yield-wizzard",
   "private": true,
   "scripts": {
     "start": "node app.js",

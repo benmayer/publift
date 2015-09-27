@@ -1,4 +1,4 @@
-// Publift Yield Expert
+// Publift Yield Wizzard
 
 
 'use strict';
@@ -7,7 +7,7 @@
 module.exports = {
 
   // current dev version
-  version: process.env.version || "1.0",
+  version: process.env.version || "v1",
 
   port: process.env.PORT || 8080,
 

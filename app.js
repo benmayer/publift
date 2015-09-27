@@ -1,4 +1,4 @@
-// Publift Yield Expert 
+// Publift Yield Wizzard 
 // Copyright 2015, Ben Mayer
 // Auhtor: Ben Mayer
 // Author Site:  ben-mayer.com
@@ -20,7 +20,8 @@
 
 var express = require('express');
 var config = require('./config');
-var inclPath = './__incl/v'+ config.version;
+var vPath = "/"+config.version;
+var inclPath = './__incl'+vPath;
 
 var app = express();
 
@@ -28,7 +29,7 @@ var app = express();
 var model = require(inclPath+'/model-' + config.dataBackend)(config);
 
 
-app.use('/tracking', require(inclPath+'/crud')(model));
+app.use(vPath, require(inclPath+'/router')(model));
 // app.use('/tracking', express.static('html'));
 // app.use('/api/tracking', require('./tracking/api')(model));
 // app.use('/api', require('./_incl/gapi')(model));
@@ -36,7 +37,7 @@ app.use('/tracking', require(inclPath+'/crud')(model));
 
 // homepage
 app.get("/", function(req, res) {
-  res.redirect('/api');
+  res.redirect(vPath+"/");
 });
 
 // Basic error handler
