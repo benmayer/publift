@@ -83,7 +83,7 @@ module.exports = function(config) {
   function list(limit, token, kind, cb) {
     var q = ds.createQuery([kind])
       .limit(limit)
-      .order('title')
+      .order('timestamp')
       .start(token);
 
     ds.runQuery(q, function(err, entities, cursor) {

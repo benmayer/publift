@@ -21,7 +21,7 @@ module.exports = {
   // Google Developers Console Project ID.
   gcloud: {
     projectId: 'publift-yield-wizzard',
-    kind : 'Unknown Publisher'
+    kind : 'Publift'
   }
 
   // mysql: {

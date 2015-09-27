@@ -18,8 +18,11 @@ module.exports = function(model) {
   });
 
   router.get('/', function list(req, res) {
-    console.log('tracking');
-    res.end("end..");
+    var kind = req.query.publisher || model.config.gcloud.kind;
+    var limit = req.query.limt || 10;
+    model.list(limit, req.query.pageToken, kind, function(err, entities) {
+      res.json(entities);
+    });
   });
 
   router.get('/tr.gif', function list(req, res) {
