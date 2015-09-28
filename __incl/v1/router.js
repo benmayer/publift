@@ -19,7 +19,7 @@ module.exports = function(model) {
 
   router.get('/', function list(req, res) {
     var kind = req.query.publisher || model.config.gcloud.kind;
-    var limit = req.query.limt || 10;
+    var limit = req.query.limit || 10;
     model.list(limit, req.query.pageToken, kind, function(err, entities) {
       res.json(entities);
     });
