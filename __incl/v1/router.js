@@ -11,6 +11,15 @@ module.exports = function(model) {
   function handleRpcError(err, res) {
     res.status(err.code || 500).send(err.message);
   }
+  function handleJsonError(err, res) {
+    var errObj = {
+      "error" : {
+        "code" : err.code,
+        "message" : err.message
+      }
+    }
+    res.status(err.code || 500).json(errObj);
+  }
 
   router.use(function(req, res, next){
     res.status(200);
@@ -21,7 +30,11 @@ module.exports = function(model) {
     var kind = req.query.publisher || model.config.gcloud.kind;
     var limit = parseInt(req.query.limit) || 0;
     model.list(limit, req.query.pageToken, kind, function(err, entities) {
-      res.json(entities);
+      if (err){
+        return handleJsonError(err, res);
+      }else{
+        res.json(entities);
+      }
     });
   });
 
@@ -40,9 +53,11 @@ module.exports = function(model) {
       if (err) return handleRpcError(err);
     });
   });
-
-
+  router.get('/dashboard/', function list(req, res) {
+    res.sendFile('index.html', { root: model.config.gRoot + '/__public/'} , function(err){
+      if (err) return handleRpcError(err);
+    });
+  });
 
   return router;
-
 };

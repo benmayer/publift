@@ -1,0 +1,20 @@
+<h1>There were <span id="num">0</span> requests</h1>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+console.log("hello");
+$.ajax({
+   url: "http://localhost:8080/v1/?publisher=Labworks%20Ltd&limit=0",
+   dataType: "json",
+   success: function(processJSON){
+     var data = processJSON;
+     for (var i = 0;i<data.length;i++){
+        $("#num").text(i);
+        console.log(i);
+     }
+     console.log("done;");
+   },
+   error: function(err){
+    $("h1").text("Error: "+err.responseJSON.error.code+" - "+err.responseJSON.error.message);
+   }
+});
+</script>
